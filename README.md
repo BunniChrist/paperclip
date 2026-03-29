@@ -199,6 +199,8 @@ Locally, a single Node.js process manages an embedded Postgres and local file st
 
 If you're a solo-entreprenuer you can use Tailscale to access Paperclip on the go. Then later you can deploy to e.g. Vercel when you need it.
 
+If your hosting environment only provides outbound IPv4, prefer the repo Docker image over ad-hoc container shells. The production image already configures `/etc/gai.conf` to prefer IPv4, which avoids login failures for CLIs that otherwise try IPv6 first inside the container.
+
 **Can I run multiple companies?**
 Yes. A single deployment can run an unlimited number of companies with complete data isolation.
 

@@ -38,6 +38,7 @@ FROM base AS production
 WORKDIR /app
 COPY --chown=node:node --from=build /app /app
 RUN npm install --global --omit=dev @anthropic-ai/claude-code@latest @openai/codex@latest opencode-ai \
+  && printf 'precedence ::ffff:0:0/96  100\n' >> /etc/gai.conf \
   && mkdir -p /paperclip \
   && chown node:node /paperclip
 
